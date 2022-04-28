@@ -28,7 +28,7 @@ function App() {
     doing = [].concat(posts)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
     .map(post => {
-      if(post.status > 0){
+      if(post.status < 1){
         return (
           <List key={post.id} date={post.createdAt} id={post.id} title={post.title} description={post.description} status={post.status}/>
         )
@@ -36,9 +36,9 @@ function App() {
     })
 
     done = [].concat(posts)
-    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .map(post => {
-      if(post.status < 1){
+      if(post.status > 0){
         return (
           <List key={post.id} date={post.createdAt} id={post.id} title={post.title} description={post.description} status={post.status}/>
         )

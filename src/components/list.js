@@ -13,7 +13,7 @@ function List({title, id, description, status, date}){
 	              	<p className="flex-auto w-60 text-xs">{date}</p>
 	            </span>
 	            <button className="border-2 rounded hover:bg-yellow-300 flex-auto ml-2 h-10" onClick={() => dispatch(handleUpdate(id))}>Edit</button>
-	            {status > 0 ? (
+	            {status < 1 ? (
 	            	<button className="border-2 rounded hover:bg-red-400 flex-auto ml-2 h-10" onClick={() => dispatch(remove(id))}>Delete</button>
 	            ) : <></>}
           	</li>

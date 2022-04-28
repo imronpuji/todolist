@@ -3,9 +3,9 @@ const create = (state, action) => {
 	const createdAt = new Date().toLocaleString()
 	const [{title, description, status}] = state.form
 	state.data.push({id, title, status, createdAt, description})
+	state.modal = false
 }
 const update = (state, action) => {
-	state.status = 'loading'
 	state.data = state.data.filter(val => {
 		if(val.id === state.form[0]['id']){
 			val['title'] = state.form[0]['title']
@@ -15,7 +15,6 @@ const update = (state, action) => {
 		return val
 	})
 	state.modal = false
-	state.status = 'succeeded'
 }
 const remove = (state, action) =>{ state.data = state.data.filter(val => val.id != action.payload) }
 
@@ -31,7 +30,7 @@ const handleCreate = (state, action) => {
   	state.form = [{
   		title:'',
   		description:'',
-  		status:1,
+  		status:0,
   	}]
   	state.modalState = 'create'
 }
