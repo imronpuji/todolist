@@ -18,6 +18,7 @@ function App() {
     if (postStatus === 'idle') {
       dispatch(fetchPosts())
     }
+    document.title = "Todo List"
   }, [postStatus, dispatch])
 
 
