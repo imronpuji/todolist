@@ -1,5 +1,5 @@
-import { create, remove, retrieve, fetchPosts, selectAllData, handleUpdate } from '../features/todoList'
-import { useSelector, useDispatch } from 'react-redux'
+import { remove, handleUpdate } from '../features/todoList'
+import { useDispatch } from 'react-redux'
 
 function List({title, id, description, status, date}){
 	

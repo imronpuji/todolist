@@ -16,11 +16,11 @@ const update = (state, action) => {
 	})
 	state.modal = false
 }
-const remove = (state, action) =>{ state.data = state.data.filter(val => val.id != action.payload) }
+const remove = (state, action) =>{ state.data = state.data.filter(val => val.id !== action.payload) }
 
 // cmp handler
 const handleUpdate = (state, action) => {
-  	state.form = state.data.filter(val => val.id == action.payload)
+  	state.form = state.data.filter(val => val.id === action.payload)
   	state.modal= true
   	state.modalState = 'update'
 }

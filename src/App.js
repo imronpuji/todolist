@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { remove, fetchPosts, selectAllData } from './features/todoList'
+import { fetchPosts, selectAllData } from './features/todoList'
 import Modal from './components/modal'
 import List from './components/list'
 import Loader from './components/loader'
@@ -22,10 +22,10 @@ function App() {
   }, [postStatus, dispatch])
 
 
-  if (postStatus == 'loading') {
+  if (postStatus === 'loading') {
     doing = <Loader/>
     done =  <Loader/>
-  } else if (postStatus == 'succeeded') {
+  } else if (postStatus === 'succeeded') {
     doing = [].concat(posts)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
     .map(post => {

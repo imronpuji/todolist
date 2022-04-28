@@ -5,10 +5,15 @@ import Form from './form'
 function Modal ({title}) {
     const dispatch = useDispatch()
     const modalState = useSelector((state) => state.todo.modalState)
+    function handleModal(className){
+      const isOverlay = className.split(' ')
+      if(isOverlay?.[1] === 'modal'){
+        dispatch(closeModal())
+      }
+    }
     return(
-    <div style={{top: "60%",   left: "50%",  transform: "translate(-50%, -50%)"}} className="w-6/12 modal fade fixed h-full"
-       tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div className="modal-dialog relative w-auto pointer-events-none">
+    <div className="w-full modal fade bg-indigo-600 bg-opacity-25 fixed h-full" aria-labelledby="exampleModalLabel" onClick={(event) => handleModal(event.target.className)}>
+      <div style={{ top: "20%",   left: "50%",  transform: "translate(-50%, -50%)"}} className="z-30 modal-dialog relative w-auto pointer-events-none w-3/6 h-32">
         <div
           className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
           <div
@@ -18,7 +23,7 @@ function Modal ({title}) {
               className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
               data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div className="modal-body relative p-4">
+          <div className="modal-body relative p-4" style={{zIndex:999}}>
             <Form/>
           </div>
           <div
