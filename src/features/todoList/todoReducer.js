@@ -1,9 +1,8 @@
 const create = (state, action) => {
 	const id = Math.random() * 11
-	const date = new Date().toLocaleString()
+	const createdAt = new Date().toLocaleString()
 	const [{title, description, status}] = state.form
-	state.data.push({id, title, status,date})
-	console.log(state.data)
+	state.data.push({id, title, status, createdAt, description})
 }
 const update = (state, action) => {
 	state.status = 'loading'

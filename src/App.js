@@ -25,7 +25,9 @@ function App() {
     doing = <Loader/>
     done =  <Loader/>
   } else if (postStatus == 'succeeded') {
-    doing = posts.map(post => {
+    doing = [].concat(posts)
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    .map(post => {
       if(post.status > 0){
         return (
           <List key={post.id} date={post.createdAt} id={post.id} title={post.title} description={post.description} status={post.status}/>
@@ -33,7 +35,9 @@ function App() {
       }
     })
 
-    done = posts.map(post => {
+    done = [].concat(posts)
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    .map(post => {
       if(post.status < 1){
         return (
           <List key={post.id} date={post.createdAt} id={post.id} title={post.title} description={post.description} status={post.status}/>
