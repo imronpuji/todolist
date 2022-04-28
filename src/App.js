@@ -26,17 +26,17 @@ function App() {
     done =  <Loader/>
   } else if (postStatus == 'succeeded') {
     doing = posts.map(post => {
-      if(post.status){
+      if(post.status > 0){
         return (
-          <List key={post.id} id={post.id} title={post.title} description={post.description} status={post.status}/>
+          <List key={post.id} date={post.dates} id={post.id} title={post.title} description={post.description} status={post.status}/>
         )
       }
     })
 
     done = posts.map(post => {
-      if(!post.status){
+      if(post.status < 1){
         return (
-          <List key={post.id} id={post.id} title={post.title} description={post.description} status={post.status}/>
+          <List key={post.id} date={post.dates} id={post.id} title={post.title} description={post.description} status={post.status}/>
         )
       }
     })

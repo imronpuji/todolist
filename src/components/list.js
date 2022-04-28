@@ -1,7 +1,7 @@
 import { create, remove, retrieve, fetchPosts, selectAllData, handleUpdate } from '../features/todoList'
 import { useSelector, useDispatch } from 'react-redux'
 
-function List({title, id, description, status}){
+function List({title, id, description, status, dates}){
 	
 	const dispatch = useDispatch()
 	return (
@@ -9,9 +9,10 @@ function List({title, id, description, status}){
 	            <span className="flex-auto w-60">
 	              	<span>{title}</span>
 	              	<p className="flex-auto w-60">{description}</p>
+	              	<p className="flex-auto w-60">{dates}</p>
 	            </span>
 	            <button className="border-2 rounded hover:bg-yellow-300 flex-auto ml-2 h-10" onClick={() => dispatch(handleUpdate(id))}>Edit</button>
-	            {status ? (
+	            {status > 0 ? (
 	            	<button className="border-2 rounded hover:bg-red-400 flex-auto ml-2 h-10" onClick={() => dispatch(remove(id))}>Delete</button>
 	            ) : <></>}
           	</li>

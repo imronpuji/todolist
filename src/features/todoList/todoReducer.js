@@ -6,8 +6,10 @@ const update = (state, action) => {
 			val['title'] = state.form[0]['title']
 			val['description'] = state.form[0]['description']
 			val['status'] = state.form[0]['status']
-		}
+		} 
+		return val
 	})
+	state.modal = false
 	state.status = 'succeeded'
 }
 const remove = (state, action) =>{ state.data = state.data.filter(val => val.id != action.payload) }
