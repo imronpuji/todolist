@@ -9,6 +9,7 @@ const todoList = createSlice({
     status :'idle',
     error:null,
     modal:false,
+    modalState:'',
     form:[]
   },
   reducers : {
@@ -36,6 +37,6 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 })
 
 export const selectAllData = state => state.todo.data
-export const { create, update, remove, closeModal, handleUpdate, updateForm } = todoList.actions
+export const { create, update, remove, closeModal, handleUpdate, updateForm, handleCreate } = todoList.actions
 
 export default todoList.reducer

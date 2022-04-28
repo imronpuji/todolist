@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { update, closeModal } from '../features/todoList'
+import { update, closeModal, create } from '../features/todoList'
 import Form from './form'
 function Modal ({title}) {
     const dispatch = useDispatch()
+    const modalState = useSelector((state) => state.todo.modalState)
     return(
     <div style={{top: "60%",   left: "50%",  transform: "translate(-50%, -50%)"}} className="w-6/12 modal fade fixed h-full"
        tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,23 +39,44 @@ function Modal ({title}) {
               transition
               duration-150
               ease-in-out" onClick={() => dispatch(closeModal())}>Close</button>
-            <button type="button" className="px-6
-              py-2.5
-              bg-blue-600
-              text-white
-              font-medium
-              text-xs
-              leading-tight
-              uppercase
-              rounded
-              shadow-md
-              hover:bg-blue-700 hover:shadow-lg
-              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-              active:bg-blue-800 active:shadow-lg
-              transition
-              duration-150
-              ease-in-out
-              ml-1" onClick={() => dispatch(update())}>Save changes</button>
+
+            {
+              modalState === 'update'? 
+              <button type="button" className="px-6
+                py-2.5
+                bg-blue-600
+                text-white
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                rounded
+                shadow-md
+                hover:bg-blue-700 hover:shadow-lg
+                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                active:bg-blue-800 active:shadow-lg
+                transition
+                duration-150
+                ease-in-out
+                ml-1" onClick={() => dispatch(update())}>Save changes</button> :
+              <button type="button" className="px-6
+                py-2.5
+                bg-blue-600
+                text-white
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                rounded
+                shadow-md
+                hover:bg-blue-700 hover:shadow-lg
+                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                active:bg-blue-800 active:shadow-lg
+                transition
+                duration-150
+                ease-in-out
+                ml-1" onClick={() => dispatch(create())}>Save</button>
+            }
           </div>
         </div>
       </div>
