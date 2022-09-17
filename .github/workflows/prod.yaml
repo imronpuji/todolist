@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set Env Vars on Vercel Project
       - uses: actions/setup-node@v3
+      - name: Set Env Vars on Vercel Project
         with:
           node-version: 16
           cache: yarn
