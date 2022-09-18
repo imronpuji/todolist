@@ -7,14 +7,17 @@ on:
 
 jobs:
   vercel: 
+    name: deploy
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-      - name: Set Env Vars on Vercel Project
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
+          node-version: ${{ matrix.node-version }}
       - run: yarn install --immutable
       - run: yarn vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - run: yarn vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
