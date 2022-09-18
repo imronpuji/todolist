@@ -55,7 +55,7 @@ function App() {
   return (
     <div>
       {modal ? <Modal title="TodoList" /> : <></>}
-      <h1>this is simple todolist from imron</h1>
+      <h1>this is simple todolist from imron this is development</h1>
       <section className="flex flex-row">
         <Card comp={doing} title="DOING"/>
         <Card comp={done} title="DONE"/>
